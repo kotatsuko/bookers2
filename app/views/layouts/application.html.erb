@@ -67,9 +67,10 @@
         </div>
       </nav>
     </header>
-
     <main>
-    <p id="notice"></p>
+      <% if notice %>
+　　    <p id="notice"><%= notice %></p>
+      <% end %>
     <%= yield %>
     </main>
 
