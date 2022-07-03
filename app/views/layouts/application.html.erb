@@ -70,6 +70,8 @@
     <main>
       <% if notice %>
 　　    <p id="notice"><%= notice %></p>
+　　    <% else %>
+　　    <p id="alert"><%= alert %></p>
       <% end %>
     <%= yield %>
     </main>

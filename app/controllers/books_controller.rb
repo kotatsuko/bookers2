@@ -10,7 +10,9 @@ class BooksController < ApplicationController
       flash[:notice]="You have created book successfully."
       redirect_to book_path(@book.id)
     else
-      render books_path
+      @user=current_user
+      @books=Book.all
+      render:index
     end
   end
 
@@ -34,7 +36,7 @@ class BooksController < ApplicationController
       flash[:notice]="You have updated book successfully."
       redirect_to book_path(@book.id)
     else
-      render edit_book_path(@book.id)
+      render :edit
     end
   end
 
@@ -48,7 +50,7 @@ class BooksController < ApplicationController
   private
 
     def book_params
-      params[:book].permit(:title,:body)
+      params.require(:book).permit(:title,:body)
     end
 
 
