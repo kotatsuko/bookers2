@@ -9,24 +9,26 @@
       <table class='table'>
   		  <tr>
           <td>
-            <%= link_to user_path(@books.user_id) do %>
-            <%= image_tag @books.user.get_profile_image(100,100) %><br><%= @books.user.name %>
+            <%= link_to user_path(@booksh.user_id) do %>
+            <%= image_tag @booksh.user.get_profile_image(100,100) %><br><%= @booksh.user.name %>
             <% end %>
           </td>
           <td>
-            <%= link_to book_path(@books.id) do %>
-            <%= @books.title %>
+            <%= link_to book_path(@booksh.id) do %>
+            <%= @booksh.title %>
             <% end %>
           </td>
           <td>
-            <%= @books.body %>
+            <%= @booksh.body %>
+          </td>
+          <% if @booksh.user==current_user %>
+          <td>
+            <%= link_to "Edit", edit_book_path(@booksh.id),class:"btn btn-sm btn-success" %>
           </td>
           <td>
-            <%= link_to "Edit", edit_book_path(@books.id),class:"btn btn-sm btn-success" %>
+            <%= link_to "Destroy" ,book_path(@booksh.id),method: :delete,class:"btn btn-sm btn-danger","data-confirm" => "本当に消しますか？" %>
           </td>
-          <td>
-            <%= link_to "Destroy" ,book_path(@books.id),method: :delete,class:"btn btn-sm btn-danger","data-confirm" => "本当に消しますか？" %>
-          </td>
+          <% end %>
         </tr>
       </table>
 
